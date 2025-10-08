@@ -1,0 +1,54 @@
+{
+    "name": "GamepadInput",
+    "maps": [
+        {
+            "name": "Gamepad Control",
+            "id": "47ab8a32-04ae-4f6a-82e0-0bff67ef05a3",
+            "actions": [
+                {
+                    "name": "LeftStickMove",
+                    "type": "Value",
+                    "id": "cc25db88-c5b7-4ff6-bad7-8f7166d239a8",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightStickMove",
+                    "type": "Value",
+                    "id": "7ed2abd1-45d5-4f88-b6d7-1f658c300379",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "61aa2ce7-1d12-4fe5-ba96-9a0f586251b3",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftStickMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30c9decb-6e92-4808-a464-1ae4da83cdb1",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightStickMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -2,6 +2,7 @@ using Scripts.Infrastructure.States;
 using Scripts.Logic;
 using UnityEngine;
 using Scripts.Services;
+using Scripts.Infrastructure.AssetManagement;
 using Zenject;
 
 public class BootstrappInstaller : MonoInstaller
@@ -24,6 +25,10 @@ public class BootstrappInstaller : MonoInstaller
     {
         BindCoroutineRunner();      
         BindSceneLoaderService();
+        BindConfigDataService();
+        BindAssetProvider();
+        BindInputService();       
+        BindGameFactoryService(); 
     }        
       
     private void BindCoroutineRunner()
@@ -53,8 +58,51 @@ public class BootstrappInstaller : MonoInstaller
             .FromInstance(_sceneLoaderService)
             .AsSingle()
             .NonLazy();
+    }
+
+    private void BindConfigDataService()
+    {
+        Container
+            .BindInterfacesAndSelfTo<ConfigDataService>()
+            .AsSingle()
+            .NonLazy();
+        
+    }
+    
+    private void BindAssetProvider()
+    {
+        Container
+            .BindInterfacesAndSelfTo<AssetProvider>()
+            .AsSingle()
+            .NonLazy();
+            
+        // Clean up any previous asset references
+        Container
+            .Resolve<AssetProvider>()
+            .Cleanup();
+
+        // Initialize the asset system
+        Container
+            .Resolve<AssetProvider>()
+            .Initialize();
+    }
+    
+    private void BindInputService()
+    {
+        Container
+            .BindInterfacesAndSelfTo<InputManagerService>()
+            .AsSingle()
+            .NonLazy();
+    } 
+   
+    private void BindGameFactoryService()
+    {
+        Container
+            .BindInterfacesAndSelfTo<GameFactoryService>()
+            .AsSingle()
+            .NonLazy();
     }       
-          
+
     private void CreateGameStateMachine()
     { 
         _sceneLoaderService.ShowLoadingCurtain();

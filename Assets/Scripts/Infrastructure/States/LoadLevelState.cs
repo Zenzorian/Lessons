@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Scripts.Infrastructure.States
 {
-    public class LoadLevelState : IState
+    public class LoadLevelState : IPayloadedState<ConfigData>
     {
         private const string LEVEL_SCENE_NAME = "Level";
         
@@ -22,7 +22,7 @@ namespace Scripts.Infrastructure.States
             _sceneLoader = sceneLoader;           
         }
 
-        public void Enter()
+        public void Enter(ConfigData  configData)
         {
             Debug.Log("Load Level State");
           

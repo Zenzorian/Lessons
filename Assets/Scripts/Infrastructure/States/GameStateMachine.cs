@@ -17,13 +17,16 @@ namespace Scripts.Infrastructure.States
             {
                 [typeof(LoadConfigState)] = new LoadConfigState
                 (
-                    this                                  
+                    this,
+                    diContainer.Resolve<IConfigDataService>()
                 ),               
                 
                 [typeof(MainMenuState)] = new MainMenuState
                 (
                     this,                    
-                    diContainer.Resolve<ISceneLoaderService>()                    
+                    diContainer.Resolve<ISceneLoaderService>(),
+                    diContainer.Resolve<IGameFactoryService>(),
+                    diContainer.Resolve<IInputManagerService>()
                 ),
                 
                 [typeof(LoadLevelState)] = new LoadLevelState
